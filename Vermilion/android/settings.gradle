@@ -1,0 +1,3 @@
+rootProject.name = 'Vermilion'
+
+include ':app'
