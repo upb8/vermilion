@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     width: "90%"
   },
   userButton: {
-    backgroundColor: "#F0FFF0",
+    backgroundColor: "#FAE5D3",
     padding: 15,
     width: "45%"
   },
