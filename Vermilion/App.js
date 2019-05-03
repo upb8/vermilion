@@ -56,6 +56,10 @@ class HomeScreen extends Component {
 }
 
 class MapScreen extends Component {
+  static navigationOptions = {
+    title: 'Vermilion',
+    headerRight: <View/>
+  }
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -72,8 +76,20 @@ const RootStack = createStackNavigator (
     Map: MapScreen
   },
   {
-    initialRouteName: 'Home'
-  }
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#F0FFF0", 
+      },
+      headerTintColor: "#00BFFF",
+      headerTitleStyle: {
+        textAlign: 'center',
+        flex: 1,
+        color: "#00BFFF",
+        fontFamily: "Pacifico-Regular"
+      }
+    }
+  },
 
 );
 
