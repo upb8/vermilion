@@ -63,7 +63,7 @@ class MapScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Here will be some map</Text>
+        <Text>Loading Map</Text>
         
       </View>
     );
