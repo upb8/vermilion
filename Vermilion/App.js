@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   StatusBar
 } from 'react-native';
-import {createStackNavigator, createAppContainer,} from 'react-navigation';
-
+import {createStackNavigator, createAppContainer, Dimensions} from 'react-navigation';
+import MapView from 'react-native-maps';
 
 
 class HomeScreen extends Component {
@@ -22,7 +22,7 @@ class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <StatusBar
-          backgroundColor="#F0FFF0"
+          backgroundColor="#00BFFF"
           barStyle="light-content"
         />
         <Text style={styles.welcome}>Vermilion</Text>
@@ -63,12 +63,25 @@ class MapScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Loading Map</Text>
+        <View style={styles.mapContainer}>
+          <MapView
+              style={styles.map}
+              region={{
+                latitude: 23.78825,
+                longitude: 90.4324,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121,
+              }}
+          >
+          </MapView>
+        </View>
         
       </View>
     );
   }
 }
+
+
 
 const RootStack = createStackNavigator (
   {
@@ -79,13 +92,13 @@ const RootStack = createStackNavigator (
     initialRouteName: 'Home',
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "#F0FFF0", 
+        backgroundColor: "#00BFFF", 
       },
-      headerTintColor: "#00BFFF",
+      headerTintColor: "#FFFFFF",
       headerTitleStyle: {
         textAlign: 'center',
         flex: 1,
-        color: "#00BFFF",
+        color: "#FFFFFF",
         fontFamily: "Pacifico-Regular"
       }
     }
@@ -111,26 +124,37 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor:"#F0FFF0"
+    backgroundColor:"#00BFFF"
+  },
+
+  mapContainer: {
+    height: 400,
+    width: 360,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 
   welcome: {
     fontSize: 40,
     textAlign: 'center',
     margin: 10,
-    color: "#00BFFF",
+    color: "#FFFFFF",
     fontFamily: "Pacifico-Regular"
   },
 
   login: {
-    fontFamily: "DancingScript-Regular",
-    fontSize: 30,
-    color: "#FF1493",
+    fontFamily: "BreeSerif",
+    fontSize: 15,
+    color: "#FFF5EE",
     textAlign: 'center'
   },
   input: {
     width: "90%",
-    backgroundColor: "#FFFAF0",
+    backgroundColor: "#FFFFFF",
     padding: 15,
     marginBottom: 10
   },
@@ -140,7 +164,7 @@ const styles = StyleSheet.create({
     width: "90%"
   },
   userButton: {
-    backgroundColor: "#FAE5D3",
+    backgroundColor: "#E0FFFF",
     padding: 15,
     width: "45%"
   },
