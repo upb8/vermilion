@@ -5,16 +5,26 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native';
+import {createStackNavigator, createAppContainer,} from 'react-navigation';
 
 
-type Props = {};
-export default class Vermilion extends Component {
 
-  render() {
+class HomeScreen extends Component {
+
+  static navigationOptions = {
+    header: null
+  }
+
+  render() { 
     return (
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor="#F0FFF0"
+          barStyle="light-content"
+        />
         <Text style={styles.welcome}>Vermilion</Text>
         <Text style={styles.login}>Please Login with your credentials</Text>
         <TextInput
@@ -29,18 +39,52 @@ export default class Vermilion extends Component {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.userButton}
-            onPres={() => alert("Login Works!!!")}
+            onPress={() => this.props.navigation.navigate('Map')}
           >
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.userButton}
-            onPres={() => alert("Signup Works!!!")}
+            onPress={() => alert("Signup Works!!!")}
           >
             <Text style={styles.buttonText}>Signup</Text>
           </TouchableOpacity>
         </View>
       </View>
+    );
+  }
+}
+
+class MapScreen extends Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Here will be some map</Text>
+        
+      </View>
+    );
+  }
+}
+
+const RootStack = createStackNavigator (
+  {
+    Home: HomeScreen, 
+    Map: MapScreen
+  },
+  {
+    initialRouteName: 'Home'
+  }
+
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+type Props = {};
+export default class Vermilion extends Component {
+
+  render() {
+    return (
+      <AppContainer />
     );
   }
 }
